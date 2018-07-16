@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+   <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        .error{color: red}
+    </style>
+<script src="/static/js/jquery-3.3.1.js"></script>
+
+<body>
+<h2>用户注册</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form action="" method="post" novalidate>
+                {% csrf_token %}
+                    用户名：<input type="text" class="form-control" name="username">
+                    密码：<input type="password" class="form-control" name="password">
+
+
+                    <button class="btn btn-success">确认提交</button>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+{#<script>#}
+{#    $(function () {#}
+{#        $("input[id='id_name']").blur(function () {#}
+{#            var name = $(this).val();#}
+{#            console.log(5555)#}
+{#            $("span:eq(1)").text("")#}
+{##}
+{#        $.ajax({#}
+{#            url:"/check/",#}
+{#            type:"post",#}
+{#            data:{csrfmiddlewaretoken:$("[name='csrfmiddlewaretoken']").val(),name:name},#}
+{#            success:function (date) {#}
+{#                $("span:eq(1)").text(date)#}
+{##}
+{#            }#}
+{#    });#}
+{#    })#}
+{#       $("input[class='form-control']").focus(function () {#}
+{#           $("span:eq(0)").text("")#}
+{##}
+{##}
+{#       })#}
+{#    })#}
+{#</script>#}
+
+</body>
+
+
+</html>

@@ -1,0 +1,51 @@
+{% extends "homesite.html" %}
+
+{% block content %}
+
+    <div class="article_info">
+        <h4 class="text-center">{{ artical.title }}</h4>
+        <div class="content">
+            {{ artical.content|safe }}
+        </div>
+        <div id="div_digg">
+            <div class="diggit action">
+                <span class="diggnum" id="digg_count">{{ artical.up_count }}</span>
+            </div>
+            <div class="buryit action">
+                <span class="burynum" id="bury_count">{{ artical.down_count }}</span>
+            </div>
+            <div class="clear"></div>
+            <div class="diggword" id="digg_tips">
+            </div>
+        </div>
+    </div>
+        {% csrf_token %}
+
+    <script src="/static/js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $(".action").click(function () {
+            var is_up = $(this).hasClass("diggit");
+            console.log(is_up);
+            var article_id = {{ artical.pk }};
+
+            if ('{{ request.user.username }}'){
+                $.ajax({
+                url:"/updown/",
+                type:'post',
+                date:{is_up:is_up,article_id:article_id},
+                csfrmiddlewaretoken:$("[name='csrfmiddlewaretoken']").val(),
+
+             })
+            }});
+             console.log(444);
+             {#else{location.href="/login/"}#}
+
+
+
+        })
+
+</script>
+
+{% endblock %}
+
